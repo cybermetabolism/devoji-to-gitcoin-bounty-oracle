@@ -1,0 +1,3 @@
+Needs python 3.6: https://askubuntu.com/questions/865554/how-do-i-install-python-3-6-using-apt-get
+plus: sudo apt-get install python3.6-dev
+export INFURA_API_KEY=b485dbbc7ee74931b6f4aebed404c933
