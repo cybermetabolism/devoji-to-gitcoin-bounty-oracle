@@ -1,7 +1,5 @@
 from flask import Flask, jsonify, request
 from for_interfaces import html_code
-import requests
-import emoji
 
 app = Flask(__name__)
 
@@ -15,9 +13,21 @@ def send_back_html():
 
 @app.route("/oracle-2", methods=['GET', 'POST'])
 def convert_http_to_gitcoin():
-    # map
-    text = request.get_data().decode("utf-8")
-    print("got text: ", text)
+
+    emoji_map = {
+        "&#x1F41B": "asdf",
+        "&#x1F31F": "lkjh",
+        "&#x1F477": "poiu",
+        "&#x1F3C3": "xcvb",
+    }
+    text = request.get_data(as_text=True)
+    processed = text.replace("+%26%23", " &#")
+    received_emojis = processed.split(" ")[1:]
+    git_coin_attribute = []
+    for emoji in received_emojis:
+        git_coin_attribute.append(emoji_map.get(emoji))
+    print("emojis: ", received_emojis)
+    print("list of gitcoin attributes: ", git_coin_attribute)
     return "hi there"
 
 
