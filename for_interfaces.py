@@ -6,7 +6,7 @@ html_code = """
     <title>jekyll ui</title>
 </head>
 <body>
-<h1>emoji language gitcoin bounty</h1>
+<h2>emoji language gitcoin bounty</h2>
 <p>Please enter the emoji code here: </p>
 <input type="button" value="&#x1F41B" id="button1"/>
 <input type="button" value="&#x1F31F" id="button2"/>
