@@ -7,7 +7,8 @@ response = "Oracle: I received your message - now working on it!"
 @app.route('/post/<uuid>', methods=['GET', 'POST'])
 def add_message(uuid):
     content = request.get_data()
-    print("content: ", content)
+    print("content: ", content.decode("utf-8"))
+    # now passing content to oracle
     return response
 
 
