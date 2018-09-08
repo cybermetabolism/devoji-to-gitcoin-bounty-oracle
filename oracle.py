@@ -1,13 +1,15 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
+response = "Oracle: I received your message - now working on it!"
 
-# See http://flask.pocoo.org/snippets/57/
-@app.route('/', defaults={'path': ''}, methods=['POST'])
-@app.route('/<path:path>', methods=['POST'])
 
-def catch_all(path):
-    return "Hi"
-    
+@app.route('/post/<uuid>', methods=['GET', 'POST'])
+def add_message(uuid):
+    content = request.get_data()
+    print("content: ", content)
+    return response
+
+
 if __name__ == '__main__':
     app.run(debug=True)
