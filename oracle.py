@@ -1,16 +1,32 @@
 from flask import Flask, jsonify, request
+from for_interfaces import html_code
+import requests
 
 app = Flask(__name__)
-response = "Oracle: I received your message - now working on it!"
 
 
-@app.route('/post/<uuid>', methods=['GET', 'POST'])
-def add_message(uuid):
-    content = request.get_data()
-    print("content: ", content.decode("utf-8"))
-    # now passing content to oracle
-    return response
+@app.route("/oracle-1", methods=['GET', 'POST'])
+def send_back_html():
+    # return html post to controller
+    return html_code
+
+
+@app.route("/oracle-2", methods=['GET', 'POST'])
+def make_http_post():
+    requests.post(url="some url", data="some data")
+
+
+@app.route("/oracle-3", methods=['GET', 'POST'])
+def add_message():
+    # add something here
+    pass
+
+
+@app.route("/oracle-4", methods=['GET', 'POST'])
+def add_message():
+    # add something here
+    pass
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
