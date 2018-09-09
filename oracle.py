@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from for_interfaces import html_code
-# from eth_raw_tx_bounty import raw_tx # uncomment for python3.6 web3 compatibility issue
+from eth_raw_tx_bounty import raw_tx
 
 app = Flask(__name__)
 
@@ -12,7 +12,7 @@ def send_back_html():
     return html_code
 
 
-@app.route("/oracle-2", methods=['GET', 'POST'])
+@app.route("/gitcoin-bounty", methods=['GET', 'POST'])
 def convert_http_to_gitcoin():
     emoji_map = {
         "&#x1F41B": "asdf",
@@ -31,13 +31,12 @@ def convert_http_to_gitcoin():
             pass
     print("emojis: ", received_emojis)
     print("list of gitcoin attributes: ", git_coin_attribute)
-    return "oracle-2 just translated emoji language to gitcoin bounty"
+    return jsonify(git_coin_attribute)
 
 
-@app.route("/oracle-3", methods=['GET', 'POST'])
-def some_func():
-    # raw_tx()
-    return "oracle-3 executed the ethereum raw transaction"
+@app.route("/oracle-raw-tx", methods=['GET', 'POST'])
+def send_back_raw_tx():
+    return raw_tx()
 
 
 @app.route("/oracle-4", methods=['GET', 'POST'])
